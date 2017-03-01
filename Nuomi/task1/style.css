@@ -1,0 +1,158 @@
+*,::before,::after {
+	box-sizing: border-box;
+}
+figure {
+	padding: 0;
+	margin: 0;
+}
+figcaption {
+	padding: 0;
+	margin: 0;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    position: relative;
+    display: block;
+    max-width: 800px;
+    display: flex;
+    width: 60%;   
+}
+.container img {
+    width: 100% ;
+    height: 100% ;
+    -webkit-transition: filter  1.5s;
+    -moz-transition: filter  1.5s;
+    transition: filter  1.5s;
+}
+.container .caption {
+    position: absolute;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.container .caption .title {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    opacity: .85;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+	align-items: center;
+    opacity: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .26);
+    box-shadow: 0 0 30px 20px rgba(0, 0, 0, 0.46);
+    transition: opacity .5s;
+}
+.container .caption .title::before {
+    content: '';
+    position: absolute;
+    left:0;
+    top:50%;
+    width:100%;
+    height:0;
+    overflow:hidden;
+    border:3px solid #fffffb;
+    border-width: 0 3px;
+    visibility: hidden;
+    transition: all .5s;
+}
+
+.container .caption .title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    border: 3px solid wheat;
+    border-width: 3px 0;
+    visibility: hidden;
+    transition: all .5s;
+}
+.container .caption .title h1 {
+    margin-bottom: 15px;
+}
+.container .caption .title a {
+    position: relative;
+    font-size: 20px;
+    text-decoration: none;
+    color: blue;
+	z-index: 1;
+}
+.container .steam {
+    background-image: -webkit-linear-gradient(left, blue, orange 10%, red 20%, pink 30%, yellow 40%, blue 50%, orange 60%, red 70%, pink 80%, yellow 90%, blue);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-size: 200%;
+    animation: steam 5s infinite linear;
+}
+.container .slideIn {
+    opacity: 0;
+    transform: translate(0, 20px);
+    transition: opacity .5s, transform .5s;
+}
+.container .breathe {
+    animation: breathe 5s infinite linear;
+}
+
+
+.container:hover img {
+    filter: blur(2px);
+}
+.container:hover .title {
+    opacity: 1;
+}
+.container:hover .title::before {
+    height: 100%;
+    visibility: visible;
+    top: 0;
+}
+.container:hover .title::after {
+    width: 100%;
+    visibility: visible;
+    left: 0;
+}
+.container:hover .slideIn {
+    opacity: 1;
+    transform: translate(0);
+}
+
+
+
+@keyframes steam {
+    0%  {
+    	background-position: 0 0;
+    }
+    100% {
+    	background-position: -100% 0;
+    }
+}
+@keyframes breathe {
+    0%  {
+    	color: blue;
+    }
+    25% {
+    	color: red;
+    }
+    50%  {
+    	color: pink;
+    }
+    75% {
+    	color: red;
+    }
+    0%  {
+    	color: blue;
+    }
+}
+
